@@ -1,8 +1,8 @@
-import os 
+#import os 
 import pandas as pd
+import viewing
 
-def clear_screen():
-    os.system("clear")
+    #os.system("clear")
 
 
 def staff_login():
@@ -16,7 +16,7 @@ def staff_login():
             login = True
             print("Correct Password. Staff Options:")
             staff_options()
-            os
+            
         else:
             print("Incorrect Password, Try again!")
 
@@ -30,8 +30,9 @@ def staff_options():
         print("5. Remove a Pet")
         print("6. Logout")
         choice = input("Choose from one of the above:")
+        if choice == "1":
+            viewing.add_pet()
         if choice == "3":
-            #df = pd.read_csv("pets.csv")
-            #print(df.to_string())
+            viewing.read_pet_staff()
             print("")
             print("Returned to Staff Options")
