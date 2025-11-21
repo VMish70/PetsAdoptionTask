@@ -28,3 +28,11 @@ def add_pet():
     df.to_csv("pets.csv", index = False)
     print(df)
 
+def remove_pet():
+    df = pd.read_csv("pets.csv")
+    print(df)
+    remove = input("Enter ID to remove")
+    df.set_index("PetID")
+    df.drop(remove)
+    df.to_csv("pets.csv")
+    print(df)

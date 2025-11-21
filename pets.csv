@@ -1,8 +1,8 @@
-PetID,Name,Type,Age,Size,Energy,Fee,Status,DaysInCentre
-P001,Max,Dog,3,Large,High,150,Available,45
-P002,Whiskers,Cat,2,Small,Low,80,Available,12
-P003,Flopsy,Rabbit,1,Small,Medium,50,Available,8
-P004,Buddy,Dog,7,Medium,Low,120,Reserved,67
-P005,Mittens,Cat,5,Medium,Medium,90,Adopted,0
-P005,Ahana,Cat,7,small,low,35,Available,0
-P006,ahana,cat,16,small,low,25,Available,0
+PetID, Name    , Type  , Age, Size  , Energy, Fee, Status   , DaysInCentre
+P001 , Max     , Dog   ,   3, Large , High  , 150, Available,           45
+P002 , Whiskers, Cat   ,   2, Small , Low   ,  80, Available,           12
+P003 , Flopsy  , Rabbit,   1, Small , Medium,  50, Available,            8
+P004 , Buddy   , Dog   ,   7, Medium, Low   , 120, Reserved ,           67
+P005 , Mittens , Cat   ,   5, Medium, Medium,  90, Adopted  ,            0
+P005 , Ahana   , Cat   ,   7, small , low   ,  35, Available,            0
+P006 , ahana   , cat   ,  16, small , low   ,  25, Available,            0

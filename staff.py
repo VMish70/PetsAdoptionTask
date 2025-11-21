@@ -36,3 +36,6 @@ def staff_options():
             viewing.read_pet_staff()
             print("")
             print("Returned to Staff Options")
+        if choice == "5":
+            viewing.remove_pet()
+
