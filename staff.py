@@ -39,3 +39,22 @@ def staff_options():
         if choice == "5":
             viewing.remove_pet()
 
+def complete_adoption():
+    df = pd.read_csv("pets.csv")
+    filter_df = df[df["Status"]=="Reserved"]
+    if len(filter_df) == 0:
+        print("None currently!")
+        return 
+    adopted_petID = input("Give the ID of the pet that is going to be adopted:")
+    adopted_df = filter_df[filter_df["PetID"]== adopted_petID]
+    if len(adopted_df) != 0:
+        adopter_df = pd.read_csv("adopters.csv")
+        adopter_df = adopter_df[adopter_df["AdoptedPets"]==adopted_petID]
+        print(adopted_df)
+        print(adopter_df)
+        adoption_choice = input("Confirm Adoption completion: Yes or No")
+        if adoption_choice == "Yes":
+            
+
+    
+complete_adoption()
