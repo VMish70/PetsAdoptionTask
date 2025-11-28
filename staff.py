@@ -32,6 +32,8 @@ def staff_options():
         choice = input("Choose from one of the above:")
         if choice == "1":
             viewing.add_pet()
+        if choice == "2":
+            complete_adoption()
         if choice == "3":
             viewing.read_pet_staff()
             print("")
@@ -54,7 +56,6 @@ def complete_adoption():
         print(adopter_df)
         adoption_choice = input("Confirm Adoption completion: Yes or No")
         if adoption_choice == "Yes":
-            
+            pass
 
     
-complete_adoption()

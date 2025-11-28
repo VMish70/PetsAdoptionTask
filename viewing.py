@@ -1,5 +1,4 @@
 import pandas as pd
-import main 
 def read_pet():
     df = pd.read_csv("pets.csv")
     filter_df =df[df["Status"]=="Available"]
