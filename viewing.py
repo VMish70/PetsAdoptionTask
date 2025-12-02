@@ -14,7 +14,7 @@ def read_pet_staff():
 
 def add_pet():
     df = pd.read_csv("pets.csv")
-    num_row = str(len(df))
+    num_row = str(len(df)+1)
     petID = "P" + num_row.zfill(3)
     petName = input("What's the name of the pet:")
     petType = input("What animal is this pet:")

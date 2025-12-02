@@ -2,7 +2,7 @@ AdopterID,Name,HomeType,Experience,PreferredSize,PreferredEnergy,AdoptedPets
 A001,Sarah Jones,House,Some,Medium,Medium,P010
 A002,Tom Brown,Flat,Some,Small,Low,P002
 A003,Emma Davis,Farm,Expert,Any,Any,P005;P015
-A004,Michael Wilson,House,Some,Large,High,None
-A005,Lisa Anderson,Flat,,Small,Low,None
+A004,Michael Wilson,House,Some,Large,High,
+A005,Lisa Anderson,Flat,Some,Small,Low,High
 A006,David Thompson,Farm,Expert,Large,Medium,P004
-P006,King Mish,House,None,Small,Low,None
+A007,King Mish,House,Expert,Small,Low,High
