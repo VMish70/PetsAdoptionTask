@@ -58,4 +58,6 @@ def complete_adoption():
         if adoption_choice == "Yes":
             pass
 
-    
+#def viewing_statistics():
+
+

@@ -12,7 +12,7 @@ def adopter_login():
         adopter_menu()
     else:
         print("Login failed")
-g_adopter_id = None
+g_adopter_id = 0
 def adopter_menu(): 
     choice = "0"
     while choice != "5":
@@ -61,7 +61,6 @@ def compatibility_match():
     #get available pets
     df=df[df['Status']=='Available']
     points=0
-    ##adopter_login_id= df_adopter[df_adopter["AdopterID"]== g_adopter_id]
     home=df_adopter.iloc[0]["HomeType"]
     prefered_size=df_adopter.iloc[0]["PreferredSize"]
     prefered_energy=df_adopter.iloc[0]["PreferredEnergy"]
@@ -74,60 +73,60 @@ def compatibility_match():
     print("Energy",prefered_energy)
 
 
-    df_with_score=pd.DataFrame(columns=['PetId', 'Score', 'Rating'])
+    df_with_score=pd.DataFrame(columns=['PetID', 'Score', 'Rating'])
 
 
     for i, r in df.iterrows():
         points=0
     
-    #Home Type Match
-    if r["Type"]=="Dog" and r["Size"]=="Large" and home=="Flat":
-        points=points-20
-    if r["Type"]=="Dog" and home=="Farm":
-        points=points+15
-    if (r["Type"]=="Rabbit" or r["Type"]=="Cat" or r["Type"]=="Hamster") and home=="Flat":
-        points=points+10
-    
-    # Size Preference match
-    if prefered_size==r["Size"]:
-        points=points+20
-    if prefered_size=="Any":
-        points=points+10
-    
-    #Energy level match
-    if r["Energy"]==prefered_energy:
-        points=points+20
-    if prefered_energy=="Any":
-        points=points+10
+        #Home Type Match
+        if r["Type"]=="Dog" and r["Size"]=="Large" and home=="Flat":
+            points=points-20
+        if r["Type"]=="Dog" and home=="Farm":
+            points=points+15
+        if (r["Type"]=="Rabbit" or r["Type"]=="Cat" or r["Type"]=="Hamster") and home=="Flat":
+            points=points+10
+        
+        # Size Preference match
+        if prefered_size==r["Size"]:
+            points=points+20
+        if prefered_size=="Any":
+            points=points+10
+        
+        #Energy level match
+        if r["Energy"]==prefered_energy:
+            points=points+20
+        if prefered_energy=="Any":
+            points=points+10
 
 
-    #Experience Bonus
-    if adopter_experience == "Expert":
-        points = points + 15
-    if adopter_experience == "Some":
-        points = points + 10
-    elif pet_energy == "High" and adopter_experience == "None":
-        points = points - 15 
+        #Experience Bonus
+        if adopter_experience == "Expert":
+            points = points + 15
+        if adopter_experience == "Some":
+            points = points + 10
+        elif pet_energy == "High" and adopter_experience == "None":
+            points = points - 15 
 
-    #Age Consideration
-    if pet_age >= 6:
-        points = points + 10
+        #Age Consideration
+        if pet_age >= 6:
+            points = points + 10
 
-    
-    #Calculate compatibility rating
-    if(points >=50):
-        compatibility_rating= "Excellent Match! 3 stars"
-    if(points>=30 and points<50) :
-        compatibility_rating= "Good Match! 2 stars"
-    if(points>=10 and points<30):
-        compatibility_rating= "Possible Match! 1 star"
-    if(points<10):
-        compatibility_rating= "Not recommended! 0 star"
-
-
-    df_with_score.loc[i]=[r["PetID"], points, compatibility_rating]
+        
+        #Calculate compatibility rating
+        if(points >=50):
+            compatibility_rating= "Excellent Match! 3 stars"
+        if(points>=30 and points<50) :
+            compatibility_rating= "Good Match! 2 stars"
+        if(points>=10 and points<30):
+            compatibility_rating= "Possible Match! 1 star"
+        if(points<10):
+            compatibility_rating= "Not recommended! 0 star"
 
 
-    print("Now showing scores:") 
-    for i,r in df_with_score.iterrows():
-        print(df_with_score)
+        df_with_score.loc[i]=[r["PetID"], points, compatibility_rating]
+
+
+        print("Now showing scores:") 
+        for i,r in df_with_score.iterrows():
+            print(df_with_score)
