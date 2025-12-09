@@ -1,5 +1,6 @@
 
 import pandas as pd 
+import os
 
 def adopter_login():
     df = pd.read_csv("adopters.csv")
@@ -27,6 +28,8 @@ def adopter_menu():
         if choice == "2":
             reserve_pet()
         if choice >= "5":
+            os.system("clear")
+            print("Returned to Main Menu:")
             return
 
 def reserve_pet():
@@ -37,6 +40,14 @@ def reserve_pet():
         pass
     print(filter_df)
     adopter_choice = input("Enter the Pet ID of the pet you want to reserve:")
+    adopted_df = filter_df[filter_df["PetID"]== adopter_choice]
+    available_adopted_df = adopted_df[adopted_df["Status"] == "Available"]
+    if len(available_adopted_df) == 0:
+        print("No available pet!")
+        adopter_menu()
+    
+    
+
 
 
 
@@ -127,6 +138,22 @@ def compatibility_match():
         df_with_score.loc[i]=[r["PetID"], points, compatibility_rating]
 
 
-        print("Now showing scores:") 
-        for i,r in df_with_score.iterrows():
-            print(df_with_score)
+    print("Now showing scores:") 
+    for i,r in df_with_score.iterrows():
+        print(df_with_score)
+
+def cancel_reservation():
+    df = pd.read_csv("pets.csv")
+    adopter_df = pd.read_csv("adopters.csv")
+    filter_df = df[df["Status"]=="Reserved"]
+    if len(filter_df) == 0:
+        print("No pet")
+        adopter_menu()
+    cancel_petID = input("Give the PetID of the pet yoy want to cancel the reservation of:")
+    no_reserve_df = filter_df[filter_df["PetID"] == cancel_petID]
+    if len(no_reserve_df) == 1:
+        no_reserve_df = no_reserve_df[no_reserve_df["PetID"] == "Available"]
+        adopter_df = adopter_df[adopter_df["AdoptedPets"]== cancel_petID]
+        adopter_df = adopter_df[adopter_df["AdoptedPets"]== "None"]
+        print("Confirm Cancelation")
+
