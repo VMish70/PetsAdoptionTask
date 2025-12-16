@@ -18,16 +18,27 @@ def register_adopter():
     df = pd.read_csv("adopters.csv")
     num_row = str(len(df)+1)
     adopter_ID = "A" + num_row.zfill(3)
-    adopter_name = input("Enter your name: (Note must be only 2 words!)")
-    adopter_home = input("Home type (Flat, House, or Farm only)")
-    adopter_experience = input("Experience level (None, Some, or Expert)")
-    adopter_pet_size = input("Preferred pet size (Small, Medium, Large, or Any)")
-    adopter_energy = input("Preferred energy level (Low, Medium, High, or Any)")
-    if len(adopter_name.split(" ")) >=2 :
-        adopter_pets = "None"
-        df.loc[len(df)] = [adopter_ID,adopter_name, adopter_home, adopter_experience, adopter_pet_size, adopter_energy, adopter_pets]
-        df.to_csv("adopters.csv", index = False)
-        print(df)
+    for i in range(3):
+        adopter_name = input("Enter your name: (Note must be only 2 words!)")
+        adopter_home = input("Home type (Flat, House, or Farm only)")
+        adopter_experience = input("Experience level (None, Some, or Expert)")
+        adopter_pet_size = input("Preferred pet size (Small, Medium, Large, or Any)")
+        adopter_energy = input("Preferred energy level (Low, Medium, High, or Any)")
+        if len(adopter_name.split(" ")) >=2 :
+            if adopter_home == "Flat" or adopter_home == "House" or adopter_home == "Farm":
+                if adopter_experience == "None" or adopter_experience == "Some" or adopter_experience == "Expert":
+                    if adopter_pet_size == "Small" or adopter_pet_size == "Medium" or adopter_pet_size == "Large" or adopter_pet_size == "Any":
+                        if adopter_energy == "Low" or adopter_energy == "Medium" or adopter_energy == "High" or adopter_energy == "Any":
+                            adopter_pets = "None"
+                            df.loc[len(df)] = [adopter_ID,adopter_name, adopter_home, adopter_experience, adopter_pet_size, adopter_energy, adopter_pets]
+                            df.to_csv("adopters.csv", index = False)
+                            print(df)
+        else:
+            print("Fill in the correct parameters!")
+    os.system("clear")
+    print("Failed too many times! Returned to main menu.")
+
+    
 
 def adopter_menu(): 
     choice = "0"
@@ -163,3 +174,6 @@ def reserve_pet():
             adopter_menu()
         else:
             available_adopted_df = adopted_df[adopted_df["Status"] == "Reserved"]
+            base_fee =- available_adopted_df.iloc[adopter_choice]["Fee"]
+            if df[df["DaysInCentre"]== 60]:
+                fee = float(base_fee * 0.7)
